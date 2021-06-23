@@ -14,14 +14,15 @@ import Screen from "../components/Screen";
 const initialMessages = [
   {
     id: 1,
-    title: "T1",
-    description: "D1",
+    title: "Sakibul Islam Munna Sakibul Islam Munna Namia Karim Mrittika",
+    description:
+      "Vai, taka ta khub dorkar vai. Please vai diye den. Taka r jala boro jala vai. Eta ektu bojhar cheshta koren vai :)",
     image: require("../assets/mosh.jpg"),
   },
   {
     id: 2,
-    title: "T2",
-    description: "D2",
+    title: "Emdadul Haque",
+    description: "Dhur Hala! jah vag... mara kha aaaa        ",
     image: require("../assets/mosh.jpg"),
   },
 ];

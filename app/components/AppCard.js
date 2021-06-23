@@ -8,8 +8,12 @@ function AppCard({ title, subtitle, image }) {
     <View style={styles.card}>
       <Image style={styles.image} source={image} />
       <View style={styles.detailsContainer}>
-        <AppText style={styles.title}>{title}</AppText>
-        <AppText style={styles.subtitle}>{subtitle}</AppText>
+        <AppText style={styles.title} numberofLines={1}>
+          {title}
+        </AppText>
+        <AppText style={styles.subtitle} numberofLines={2}>
+          {subtitle}
+        </AppText>
       </View>
     </View>
   );

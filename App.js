@@ -20,7 +20,8 @@ import AccountScreen from "./app/screens/AccountScreen";
 import AppTextInput from "./app/components/AppTextInput";
 import LoginScreen from "./app/screens/LoginScreen";
 import ListingEditScreen from "./app/screens/ListingEditScreen";
+import RegisterScreen from "./app/screens/RegisterScreen";
 
 export default function App() {
-  return <ListingEditScreen></ListingEditScreen>;
+  return <MessagesScreen></MessagesScreen>;
 }

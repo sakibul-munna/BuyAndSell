@@ -19,7 +19,8 @@ import ListingScreen from "./app/screens/ListingScreen";
 import AccountScreen from "./app/screens/AccountScreen";
 import AppTextInput from "./app/components/AppTextInput";
 import LoginScreen from "./app/screens/LoginScreen";
+import ListingEditScreen from "./app/screens/ListingEditScreen";
 
 export default function App() {
-  return <LoginScreen></LoginScreen>;
+  return <ListingEditScreen></ListingEditScreen>;
 }

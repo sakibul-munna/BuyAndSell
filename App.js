@@ -34,10 +34,16 @@ import ImageInput from "./app/components/ImageInput";
 import * as ImagePicker from "expo-image-picker";
 import ImageInputList from "./app/components/ImageInputList";
 
+import { createStackNavigator } from "@react-navigation/stack";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { NavigationContainer } from "@react-navigation/native";
+import AuthNavigator from "./app/navigations/AuthNavigator";
+import navigationTheme from "./app/navigations/navigationTheme";
+
 export default function App() {
   return (
-    <Screen>
-      <ListingEditScreen />
-    </Screen>
+    <NavigationContainer theme={navigationTheme}>
+      <AuthNavigator />
+    </NavigationContainer>
   );
 }

@@ -39,11 +39,12 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
 import AuthNavigator from "./app/navigations/AuthNavigator";
 import navigationTheme from "./app/navigations/navigationTheme";
+import AppNavigator from "./app/navigations/AppNavigator";
 
 export default function App() {
   return (
     <NavigationContainer theme={navigationTheme}>
-      <AuthNavigator />
+      <AppNavigator />
     </NavigationContainer>
   );
 }

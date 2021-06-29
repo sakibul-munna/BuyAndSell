@@ -6,18 +6,20 @@ import AppButton from "../components/AppButton";
 import AppCard from "../components/AppCard";
 import AppText from "../components/AppText";
 import colors from "../config/colors";
-import getListings from "../api/listings";
+import listingsApi from "../api/listings";
 import routes from "../navigations/routes";
 import Screen from "../components/Screen";
 import useApi from "../hooks/useApi";
 
 function ListingsScreen({ navigation }) {
+  const getListingsApi = listingsApi.getListings;
+
   const {
     data: listings,
     error,
     loading,
     request: loadListings,
-  } = useApi(getListings);
+  } = useApi(getListingsApi);
 
   useEffect(() => {
     loadListings(1, 2, 3);

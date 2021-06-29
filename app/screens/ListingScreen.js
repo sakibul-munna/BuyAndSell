@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { FlatList, StyleSheet } from "react-native";
 
 import AppActivityIndicator from "../components/AppActivityIndicator";
@@ -9,30 +9,20 @@ import colors from "../config/colors";
 import getListings from "../api/listings";
 import routes from "../navigations/routes";
 import Screen from "../components/Screen";
+import useApi from "../hooks/useApi";
 
 function ListingsScreen({ navigation }) {
-  const [listings, setListings] = useState([]);
-  const [error, setError] = useState(false);
-  const [loading, setLoading] = useState(true);
-
-  const loadListings = async () => {
-    setLoading(true);
-    const response = await getListings();
-    setLoading(false);
-
-    if (!response.ok) {
-      return setError(true);
-    } else {
-      setError(false);
-      setListings(response.data);
-    }
-  };
+  const {
+    data: listings,
+    error,
+    loading,
+    request: loadListings,
+  } = useApi(getListings);
 
   useEffect(() => {
-    loadListings();
+    loadListings(1, 2, 3);
   }, []);
 
-  useEffect;
   return (
     <Screen style={styles.screen}>
       {error && (

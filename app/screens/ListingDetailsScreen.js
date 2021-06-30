@@ -12,19 +12,21 @@ function ListingDetailsScreen({ route }) {
     <View>
       <Image
         style={styles.image}
-        uri={listing.images[0].url}
         preview={{ uri: listing.images[0].thumbnailUrl }}
         tint="light"
+        uri={listing.images[0].url}
       />
       <View style={styles.detailsContainer}>
-        <AppText style={styles.title}>(listing.title)</AppText>
+        <AppText style={styles.title}>{listing.title}</AppText>
         <AppText style={styles.price}>${listing.price}</AppText>
+        <View style={styles.userContainer}>
+          <ListItem
+            image={require("../assets/mosh.jpg")}
+            title="Mosh Hamedani"
+            subTitle="5 Listings"
+          />
+        </View>
       </View>
-      <ListItem
-        image={require("../assets/mosh.jpg")}
-        title="Mosh"
-        subtitle="5 Listings"
-      />
     </View>
   );
 }

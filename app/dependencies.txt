@@ -5,3 +5,6 @@
 - expo install react-native-gesture-handler react-native-reanimated react-native-screens react-native-safe-area-context @react-native-community/masked-view
 - npm install @react-navigation/stack
 - npm install @react-navigation/bottom-tabs
+##Caching Images!
+- npm i react-native-expo-image-cache
+- npm i expo-blur

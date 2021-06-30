@@ -40,11 +40,15 @@ import { NavigationContainer } from "@react-navigation/native";
 import AuthNavigator from "./app/navigations/AuthNavigator";
 import navigationTheme from "./app/navigations/navigationTheme";
 import AppNavigator from "./app/navigations/AppNavigator";
+import OfflineNotice from "./app/components/OfflineNotice";
 
 export default function App() {
   return (
-    <NavigationContainer theme={navigationTheme}>
-      <AppNavigator />
-    </NavigationContainer>
+    <>
+      <OfflineNotice />
+      <NavigationContainer theme={navigationTheme}>
+        <AppNavigator />
+      </NavigationContainer>
+    </>
   );
 }

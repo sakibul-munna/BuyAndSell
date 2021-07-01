@@ -8,3 +8,5 @@
 ##Caching Images!
 - npm i react-native-expo-image-cache
 - npm i expo-blur
+##Storing 
+- expo install expo-secure-store

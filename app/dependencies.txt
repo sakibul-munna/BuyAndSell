@@ -10,3 +10,5 @@
 - npm i expo-blur
 ##Storing 
 - expo install expo-secure-store
+##Splash Screen Control 
+- expo install expo-app-loading

@@ -1,9 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import { StyleSheet, Image } from "react-native";
 import * as Yup from "yup";
 
 import Screen from "../components/Screen";
-import { AppForm, AppFormField, SubmitButton } from "../components/forms";
+import {
+  AppForm,
+  AppFormField,
+  ErrorMessage,
+  SubmitButton,
+} from "../components/forms";
+import usersApi from "../api/users";
+import useApi from "../hooks/useApi";
+import AppActivityIndicator from "../components/AppActivityIndicator";
 
 const validationSchema = Yup.object().shape({
   name: Yup.string().required().label("Name"),
@@ -11,14 +19,33 @@ const validationSchema = Yup.object().shape({
   password: Yup.string().required().min(4).label("Password"),
 });
 
-function RegisterScreen(props) {
+function RegisterScreen({ navigation }) {
+  const registerApi = useApi(usersApi.register);
+  const [error, setError] = useState(false);
+
+  const handleSubmit = async (userInfo) => {
+    const result = await registerApi.request(userInfo);
+    if (!result.ok) {
+      if (result.data) setError(result.data.error);
+      else {
+        setError("An unexpected error occurred");
+        console.log(result);
+      }
+    } else {
+      alert("Registration Successfull!");
+      navigation.navigate("Login");
+    }
+  };
+
   return (
     <Screen style={styles.container}>
+      <AppActivityIndicator visible={registerApi.loading} />
       <AppForm
         initialValues={{ name: "", email: "", password: "" }}
-        onSubmit={(values) => console.log(values)}
+        onSubmit={handleSubmit}
         validationSchema={validationSchema}
       >
+        <ErrorMessage error={error} visible={error} />
         <AppFormField
           autoCorrect={false}
           icon="account"

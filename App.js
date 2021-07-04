@@ -17,7 +17,7 @@ export default function App() {
 
   const restoreUser = async () => {
     const user = await storage.getUser();
-    if (!user) setUser(user);
+    if (user) setUser(user);
   };
 
   if (!isReady) {

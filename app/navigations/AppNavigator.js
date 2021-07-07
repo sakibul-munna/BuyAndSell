@@ -1,69 +1,17 @@
-import React, { useEffect, useState, useRef } from "react";
+import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import * as Notifications from "expo-notifications";
-import Constants from "expo-constants";
 
 import AccountNavigator from "./AccountNavigator";
-import expoPushTokens from "../api/expoPushTokens";
 import FeedNavigator from "./FeedNavigator";
 import ListingEditScreen from "../screens/ListingEditScreen";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import navigation from "./rootNavigation";
 import NewListingButton from "./NewListingButton";
+import useNotification from "../hooks/useNotification";
 
 const Tab = createBottomTabNavigator();
 
-Notifications.setNotificationHandler({
-  handleNotification: async () => ({
-    shouldShowAlert: true,
-    shouldPlaySound: false,
-    shouldSetBadge: false,
-  }),
-});
-
 const AppNavigator = () => {
-  const [expoPushToken, setExpoPushToken] = useState("");
-
-  async function registerForPushNotificationsAsync() {
-    let token;
-    if (Constants.isDevice) {
-      const { status: existingStatus } =
-        await Notifications.getPermissionsAsync();
-      let finalStatus = existingStatus;
-      if (existingStatus !== "granted") {
-        const { status } = await Notifications.requestPermissionsAsync();
-        finalStatus = status;
-      }
-      if (finalStatus !== "granted") {
-        alert("Failed to get push token for push notification!");
-        return;
-      }
-      token = (await Notifications.getExpoPushTokenAsync()).data;
-      expoPushTokens.register(token);
-    } else {
-      alert("Must use physical device for Push Notifications");
-    }
-
-    if (Platform.OS === "android") {
-      Notifications.setNotificationChannelAsync("default", {
-        name: "default",
-        importance: Notifications.AndroidImportance.MAX,
-        vibrationPattern: [0, 250, 250, 250],
-        lightColor: "#FF231F7C",
-      });
-    }
-    return token;
-  }
-
-  useEffect(() => {
-    registerForPushNotificationsAsync().then((token) =>
-      setExpoPushToken(token)
-    );
-    Notifications.addNotificationReceivedListener((notification) => {
-      navigation.navigate("Account");
-    });
-  }, []);
-
+  useNotification();
   return (
     <Tab.Navigator>
       <Tab.Screen

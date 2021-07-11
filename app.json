@@ -26,6 +26,14 @@
     "web": {
       "favicon": "./assets/favicon.png"
     },
-    "description": ""
+    "description": "A place where you can sell whatever you dont need and buy whatever you want!",
+    "notification": {
+      "iosDisplayInForeground": true
+    },
+    "extra": {
+      "bugsnag": {
+        "apiKey": "6f19c1f7c0bc51e887683ca14ac713d3"
+      }
+    }
   }
 }

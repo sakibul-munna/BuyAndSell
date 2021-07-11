@@ -12,6 +12,8 @@ import storage from "./app/auth/storage";
 
 import OfflineNotice from "./app/components/OfflineNotice";
 
+import logger from "./app/utility/logger";
+
 export default function App() {
   const [user, setUser] = useState();
   const [isReady, setIsReady] = useState(false);

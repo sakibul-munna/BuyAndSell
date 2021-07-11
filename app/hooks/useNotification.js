@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import Constants from "expo-constants";
 import expoPushTokens from "../api/expoPushTokens";
-import navigation from "./rootNavigation";
 import * as Notifications from "expo-notifications";
 
 Notifications.setNotificationHandler({
@@ -14,9 +13,7 @@ Notifications.setNotificationHandler({
 
 export default useNotification = (notificationListener) => {
   useEffect(() => {
-    registerForPushNotificationsAsync().then((token) =>
-      setExpoPushToken(token)
-    );
+    registerForPushNotificationsAsync();
     if (notificationListener)
       Notifications.addNotificationReceivedListener(notificationListener);
   }, []);

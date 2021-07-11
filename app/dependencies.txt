@@ -12,3 +12,6 @@
 - expo install expo-secure-store
 ##Splash Screen Control 
 - expo install expo-app-loading
+## Asset Optimization
+- npm i -ge sharp-cli
+- npx expo-optimize

@@ -17,3 +17,5 @@
 - npx expo-optimize
 ## Bugsnag Integration
 - npm install @bugsnag/expo
+## 
+- expo publish --release-channel staging

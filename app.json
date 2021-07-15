@@ -18,8 +18,10 @@
       "supportsTablet": true
     },
     "android": {
+      "package": "com.sakibul_munna.buyandsell",
+      "versionCode": 1,
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./app/assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
       }
     },

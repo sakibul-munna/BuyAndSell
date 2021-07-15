@@ -17,5 +17,7 @@
 - npx expo-optimize
 ## Bugsnag Integration
 - npm install @bugsnag/expo
-## 
+## Building and Publishing
 - expo publish --release-channel staging
+- expo build:android
+- expo fetch:android:keystore

@@ -21,3 +21,5 @@
 - expo publish --release-channel staging
 - expo build:android
 - expo fetch:android:keystore
+##Firebase Integration
+- expo install firebase

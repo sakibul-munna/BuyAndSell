@@ -42,7 +42,8 @@
     "react-native-screens": "~3.0.0",
     "react-native-web": "~0.13.12",
     "sharp-cli": "^1.15.0",
-    "yup": "^0.32.9"
+    "yup": "^0.32.9",
+    "firebase": "8.2.3"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",

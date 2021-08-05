@@ -1,17 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { StyleSheet, Image } from "react-native";
 import * as Yup from "yup";
 
-import Screen from "../components/Screen";
+import AppActivityIndicator from "../components/AppActivityIndicator";
+import { AuthContext } from "../auth/AuthProvider";
 import {
   AppForm,
   AppFormField,
   ErrorMessage,
   SubmitButton,
 } from "../components/forms";
+import Screen from "../components/Screen";
 import usersApi from "../api/users";
 import useApi from "../hooks/useApi";
-import AppActivityIndicator from "../components/AppActivityIndicator";
 
 const validationSchema = Yup.object().shape({
   name: Yup.string().required().label("Name"),
@@ -23,18 +24,17 @@ function RegisterScreen({ navigation }) {
   const registerApi = useApi(usersApi.register);
   const [error, setError] = useState(false);
 
+  const { register } = useContext(AuthContext);
+
   const handleSubmit = async (userInfo) => {
-    const result = await registerApi.request(userInfo);
-    if (!result.ok) {
-      if (result.data) setError(result.data.error);
-      else {
-        setError("An unexpected error occurred");
-        console.log(result);
-      }
-    } else {
-      alert("Registration Successfull!");
-      navigation.navigate("Login");
+    try {
+      await register(userInfo);
+    } catch (error) {
+      setError("An unexpected error occurred in registration");
+      console.log(error);
+      return;
     }
+    navigation.navigate("Login");
   };
 
   return (

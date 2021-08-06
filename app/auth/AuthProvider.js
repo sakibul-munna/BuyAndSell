@@ -23,7 +23,6 @@ export const AuthProvider = ({ children }) => {
             })
             .catch((error) => {
               alert(error);
-              flag = false;
             });
           return flag;
         },
@@ -34,24 +33,7 @@ export const AuthProvider = ({ children }) => {
             .createUserWithEmailAndPassword(userInfo.email, userInfo.password)
             .then((userCreds) => {
               userCreds.user.updateProfile({ displayName: userInfo.name });
-              firebase
-                .database()
-                .ref()
-                .child("users/")
-                .child(userCreds.user.uid)
-                .set({
-                  name: userInfo.name,
-                  email: userInfo.email,
-                })
-                .then(() => {
-                  flag = true;
-                  alert("User Created!");
-                  console.log(userCreds.user);
-                })
-                .catch((error) => {
-                  flag = false;
-                  alert("Error in creation of user!" + error);
-                });
+              flag = true;
             })
             .catch((error) => {
               alert("Error in creation of user!" + error);

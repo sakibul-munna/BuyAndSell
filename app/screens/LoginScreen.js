@@ -24,8 +24,10 @@ function LoginScreen() {
   const handleSubmit = async ({ email, password }) => {
     const result = await login(email, password);
     if (!result) {
+      console.log(loginFailed);
       return setLoginFailed(true);
     } else {
+      console.log(loginFailed);
       setLoginFailed(false);
     }
   };
@@ -38,10 +40,10 @@ function LoginScreen() {
         onSubmit={handleSubmit}
         validationSchema={validationSchema}
       >
-        <ErrorMessage
+        {/* <ErrorMessage
           error="Invalid email and/or password."
           visible={loginFailed}
-        />
+        /> */}
         <AppFormField
           autoCapitalize="none"
           autoCorrect={false}
@@ -55,7 +57,6 @@ function LoginScreen() {
           autoCapitalize="none"
           autoCorrect={false}
           icon="lock"
-          keyboardType="email-address"
           name="password"
           placeholder="Password"
           secureTextEntry
